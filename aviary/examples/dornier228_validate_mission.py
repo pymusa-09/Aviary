@@ -8,7 +8,8 @@ import aviary.api as av
 import numpy as np
 import math
 
-# Adjusted rounding function to handle NaN and infinite values because I am getting NAN values
+# Adjusted rounding function to handle NaN and infinite values because I was getting NAN values in previous cases
+
 def round_it(x):
     if math.isnan(x) or math.isinf(x):
         return 'NaN'  # Handle NaN and infinity gracefully
@@ -134,7 +135,8 @@ prob.add_objective(objective_type=objective_type)
 prob.setup()
 prob.set_initial_guesses()
 
-# Check for NaN values in inputs before running the model
+# Check for NaN values in inputs before running the model, mostly found in fuselage engine models...
+
 print("Checking inputs for NaN values:")
 inputs = prob.model.list_inputs(val=True)
 for name, meta in inputs:
